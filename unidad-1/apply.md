@@ -20,8 +20,9 @@ Esperaba que al ejecutar el codigo, el fondo cambiara entre colores vivos y se v
 // http://natureofcode.com
 //
 
-´´´ 
-let walker;
+<pre>
+  <code>
+    let walker;
 
 function setup() {
   createCanvas(640, 240);
@@ -70,6 +71,10 @@ class Walker {
     }
   }
 }
+
+</code>
+</pre>
+
 
 ´´´ 
 
