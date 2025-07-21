@@ -20,6 +20,7 @@ Esperaba que al ejecutar el codigo, el fondo cambiara entre colores vivos y se v
 // http://natureofcode.com
 //
 
+´´´ 
 let walker;
 
 function setup() {
@@ -69,4 +70,6 @@ class Walker {
     }
   }
 }
+
+´´´ 
 
