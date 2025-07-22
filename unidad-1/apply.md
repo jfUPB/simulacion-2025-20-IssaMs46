@@ -138,3 +138,56 @@ class Walker {
 
 al añadir el randomGaussian de por si shace que la distribucion de probabilidades no sea uniforme y al agregarle +1 hacemos que tenga el sezgo hacia la derecha (también lo apliqué con el eje y pero sin el sezgo) y pues ahi básicamente podemos ver que al ejecutar el código nuestro puntito se va hacia la derecha
 
+### Actividad 05
+Holi, bueno, básicamente intenté recrear la campana de gauss y pues que se vea un poco más el hecho de que es más probable que salgan valores cercanos a la media que los valores que están en los extremos
+
+<pre>
+<code>
+let veces = [];
+let numCajas = 100;
+
+function setup() 
+{
+  createCanvas(640, 360);
+  background(255);
+  
+  for (let i =0; i<numCajas; i++)
+    {
+      veces[i]=0;
+    }
+}
+
+function draw() 
+{
+  let value = randomGaussian();
+  
+  let sd=1;
+  let mean = 0;
+  
+  let x= floor(map(value, mean - 3 * sd, mean + 3 *sd, 0, numCajas));
+  
+  if(x>=0 && x<numCajas)
+    {
+      veces[x]++;
+    }
+  
+  background(255);
+  stroke(0);
+  fill(100, 100, 255);
+  
+  let w = width / numCajas;
+  for(let i = 0; i < numCajas; i++)
+  {
+    
+    let h = veces[i];
+    rect(i*w, height, w, -h)
+  }
+}
+</code>
+</pre>
+
+este es el link al sketch en p5.js https://editor.p5js.org/isams2004.1/sketches/X67z1WhZC
+
+y esta es la imagen:
+<img width="1771" height="737" alt="image" src="https://github.com/user-attachments/assets/03e2c514-8c9f-49e3-9bef-6f850a04cf65" />
+
