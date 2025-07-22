@@ -20,8 +20,7 @@ Esperaba que al ejecutar el codigo, el fondo cambiara entre colores vivos y se v
 // http://natureofcode.com
 //
 
-<pre>
-  <code>
+```
     let walker;
 
 function setup() {
@@ -72,8 +71,7 @@ class Walker {
   }
 }
 
-</code>
-</pre>
+```
 
 
 ### Actividad 04
@@ -85,8 +83,7 @@ Básicamente, en la distribución uniforme todas las partes tiene la misma proba
 <b> Modifica el código de la caminata aleatoria para que utilice una distribución no uniforme, favoreciendo el movimiento hacia la derecha. </b>
 
 
-<pre>
-<code>
+```
 
 
 let walker;
@@ -133,16 +130,14 @@ class Walker {
 }
 
 
-</code>
-</pre>
+```
 
 al añadir el randomGaussian de por si shace que la distribucion de probabilidades no sea uniforme y al agregarle +1 hacemos que tenga el sezgo hacia la derecha (también lo apliqué con el eje y pero sin el sezgo) y pues ahi básicamente podemos ver que al ejecutar el código nuestro puntito se va hacia la derecha
 
 ### Actividad 05
 Holi, bueno, básicamente intenté recrear la campana de gauss y pues que se vea un poco más el hecho de que es más probable que salgan valores cercanos a la media que los valores que están en los extremos
 
-<pre>
-<code>
+```
 let veces = [];
 let numCajas = 100;
 
@@ -151,7 +146,7 @@ function setup()
   createCanvas(640, 360);
   background(255);
   
-  for (let i =0; i<numCajas; i++)
+  for (let i =0; i<numCajas ; i++)
     {
       veces[i]=0;
     }
@@ -175,16 +170,15 @@ function draw()
   stroke(0);
   fill(100, 100, 255);
   
-  let w = width / numCajas;
-  for(let i = 0; i < numCajas; i++)
-  {
+   let w = width / numCajas;
+  for(let i = 0; i < numCajas; i++) {
     
-    let h = veces[i];
-    rect(i*w, height, w, -h)
-  }
-}
-</code>
-</pre>
+     let h = veces[i];
+     rect(i*w, height, w, -h)
+   }
+ }
+                     
+```
 
 este es el link al sketch en p5.js https://editor.p5js.org/isams2004.1/sketches/X67z1WhZC
 
