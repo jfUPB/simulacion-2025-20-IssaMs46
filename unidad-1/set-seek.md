@@ -2,9 +2,6 @@
 
 ## 🔎 Fase: Set + Seek
 
-# Unidad 1
-
-## 🛠 Fase: Apply
 
 ### Actividad 01
 La aleatoriedad en el arte generativo permite que una misma obra pueda tener múltiples resultados únicos, expresando emociones distintas y dándole al azar un rol creativo casi tan importante como el del artista.
