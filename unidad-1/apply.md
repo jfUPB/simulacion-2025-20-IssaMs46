@@ -15,10 +15,6 @@ modifiqué el codigo para que cuando salga el valor 5 en step (es decir, añadí
 
 Esperaba que al ejecutar el codigo, el fondo cambiara entre colores vivos y se viera el cuadradito mas grande y nítido, al ejecutar el codigo me di cuenta de que no es como que los colores del fondo sean MUY intensos y también caí en cuenta de que por la opacidad, al punto le quedaba una especie de rastro, a medida que se movía, luego desaparecía ese rastro, por lo que cambia bastante al compararlo con el codigo inicial. este es mi codigo:
 
-// The Nature of Code
-// Daniel Shiffman
-// http://natureofcode.com
-//
 
 ```
     let walker;
@@ -132,7 +128,7 @@ class Walker {
 
 ```
 
-al añadir el randomGaussian de por si shace que la distribucion de probabilidades no sea uniforme y al agregarle +1 hacemos que tenga el sezgo hacia la derecha (también lo apliqué con el eje y pero sin el sezgo) y pues ahi básicamente podemos ver que al ejecutar el código nuestro puntito se va hacia la derecha
+al añadir el randomGaussian de por si shace que la distribucion de probabilidades no sea uniforme y al agregarle +1 hacemos que tenga el sesgo hacia la derecha (también lo apliqué con el eje y pero sin el sesgo) y pues ahi básicamente podemos ver que al ejecutar el código nuestro puntito se va hacia la derecha
 
 ### Actividad 05
 Holi, bueno, básicamente intenté recrear la campana de gauss y pues que se vea un poco más el hecho de que es más probable que salgan valores cercanos a la media que los valores que están en los extremos
@@ -184,4 +180,76 @@ este es el link al sketch en p5.js https://editor.p5js.org/isams2004.1/sketches/
 
 y esta es la imagen:
 <img width="1771" height="737" alt="image" src="https://github.com/user-attachments/assets/03e2c514-8c9f-49e3-9bef-6f850a04cf65" />
+
+### Actividad 06
+
+Adicioné el Levy FLight al ejemplo que habiamos visto del Walker, porque asi como lo definieron en el link adjunto, inicialmente se veía que el walker pasaba por varias partes repetitivamente y pues adicionando el levy ESPERO que la caminata se vea un poco más natural o fluida, como si "estuviera buscando algo", y pues que se vea fluido, asi como se vio inicialmente en el ejercicio de caminata, solo que sta vez espero que el  trayecto del caminante sea distinta.
+
+```
+let walker;
+
+function setup() 
+{
+  createCanvas(640, 240);
+  walker = new Walker();
+  background(255);
+}
+
+function draw() 
+{
+  walker.step();
+  walker.show();
+}
+
+class Walker 
+{
+  constructor() {
+    this.x = width / 2;
+    this.y = height / 2;
+  }
+
+  show() 
+  {
+    stroke(0);
+    strokeWeight(3);
+    point(this.x, this.y);
+  }
+
+  step() 
+  {
+    let xstep, ystep;
+    let r = random(1);
+
+    if (r < 0.01) 
+    {
+      // 1% de probabilidad de gran salto
+      xstep = random(-100, 100);
+      ystep = random(-100, 100);
+    } 
+    else 
+    {
+      // 99% de probabilidad de pasos pequeños
+      xstep = random(-1, 1);
+      ystep = random(-1, 1);
+    }
+    
+     this.x += xstep;
+    this.y += ystep;
+
+    // Evitar que se salga del canvas
+    this.x = constrain(this.x, 0, width);
+    this.y = constrain(this.y, 0, height);
+  }
+}
+
+```
+
+BUENO, no fue como esperaba la verdad, porque yo sé que decía que hacia saltos o tomaba pasos largos, pero en mi mente se veía distinto, de igual manera tiene sentido.
+
+https://editor.p5js.org/isams2004.1/sketches/ixzkzPgOK
+
+<img width="1363" height="768" alt="image" src="https://github.com/user-attachments/assets/55cce97f-c0b7-4730-a9ef-ee4f09fdb71b" />
+
+
+
 
