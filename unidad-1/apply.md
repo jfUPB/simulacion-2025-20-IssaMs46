@@ -250,6 +250,49 @@ https://editor.p5js.org/isams2004.1/sketches/ixzkzPgOK
 
 <img width="1363" height="768" alt="image" src="https://github.com/user-attachments/assets/55cce97f-c0b7-4730-a9ef-ee4f09fdb71b" />
 
+### Actividad 07
 
+Bueno, en la página mostraron el ruido perlin como una linea que va cambiando suavemente a lo largo del tiempo (como ejemplo) entonces pensé que se podría hacer con un circulo y pues que vaya cambiando suavemente (distintos puntos de ella), tambien le añadí el efecto estela que habíamos visto antes porque me quedó gustando jeje. (para este código pedí un poco de ayuda a chat gpt para entender mejor la realizacion del código y cómo llevarlo a cabo)
 
+```
+let noiseMax = 5; // Qué tan caótico es el borde
+let zoff = 0;     // Offset para animación
 
+function setup() 
+{
+  createCanvas(400, 400);
+  background(255);
+  stroke(0);
+  noFill();
+}
+
+function draw() 
+{
+  background(255, 50); 
+
+  translate(width / 2, height / 2);
+  beginShape();
+
+  let t = frameCount * 5; 
+
+  for (let a = 0; a < TWO_PI; a += 0.1) 
+  {
+    //acá aplico el perlin
+    let xoff = map(cos(a), -1, 1, 0, noiseMax);
+    let yoff = map(sin(a), -1, 1, 0, noiseMax);
+    let r = map(noise(xoff, yoff, zoff), 0, 1, 100, 200);
+    let x = r * cos(a);
+    let y = r * sin(a);
+    vertex(x, y);
+  }
+
+  endShape(CLOSE);
+  zoff += 0.01;
+}
+```
+
+https://editor.p5js.org/isams2004.1/sketches/oSkS8gj_W
+
+<img width="1201" height="600" alt="image" src="https://github.com/user-attachments/assets/716bf5d7-4956-4b7f-a703-a87581c06841" />
+
+<img width="1201" height="600" alt="image" src="https://github.com/user-attachments/assets/47e70b9c-f455-40d6-b177-d4759478b32f" />
