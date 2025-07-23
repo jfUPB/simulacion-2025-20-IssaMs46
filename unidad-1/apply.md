@@ -295,7 +295,6 @@ https://editor.p5js.org/isams2004.1/sketches/oSkS8gj_W
 
 <img width="1201" height="600" alt="image" src="https://github.com/user-attachments/assets/716bf5d7-4956-4b7f-a703-a87581c06841" />
 
-<img width="1201" height="600" alt="image" src="https://github.com/user-attachments/assets/47e70b9c-f455-40d6-b177-d4759478b32f" />
 
 ### Actividad 08
 
