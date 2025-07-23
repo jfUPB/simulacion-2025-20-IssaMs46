@@ -16,7 +16,7 @@ modifiqué el codigo para que cuando salga el valor 5 en step (es decir, añadí
 Esperaba que al ejecutar el codigo, el fondo cambiara entre colores vivos y se viera el cuadradito mas grande y nítido, al ejecutar el codigo me di cuenta de que no es como que los colores del fondo sean MUY intensos y también caí en cuenta de que por la opacidad, al punto le quedaba una especie de rastro, a medida que se movía, luego desaparecía ese rastro, por lo que cambia bastante al compararlo con el codigo inicial. este es mi codigo:
 
 
-```
+``` js
     let walker;
 
 function setup() {
@@ -79,7 +79,7 @@ Básicamente, en la distribución uniforme todas las partes tiene la misma proba
 <b> Modifica el código de la caminata aleatoria para que utilice una distribución no uniforme, favoreciendo el movimiento hacia la derecha. </b>
 
 
-```
+``` js
 
 
 let walker;
@@ -133,7 +133,7 @@ al añadir el randomGaussian de por si shace que la distribucion de probabilidad
 ### Actividad 05
 Holi, bueno, básicamente intenté recrear la campana de gauss y pues que se vea un poco más el hecho de que es más probable que salgan valores cercanos a la media que los valores que están en los extremos
 
-```
+``` js
 let veces = [];
 let numCajas = 100;
 
@@ -185,7 +185,7 @@ y esta es la imagen:
 
 Adicioné el Levy FLight al ejemplo que habiamos visto del Walker, porque asi como lo definieron en el link adjunto, inicialmente se veía que el walker pasaba por varias partes repetitivamente y pues adicionando el levy ESPERO que la caminata se vea un poco más natural o fluida, como si "estuviera buscando algo", y pues que se vea fluido, asi como se vio inicialmente en el ejercicio de caminata, solo que sta vez espero que el  trayecto del caminante sea distinta.
 
-```
+``` js
 let walker;
 
 function setup() 
@@ -254,7 +254,7 @@ https://editor.p5js.org/isams2004.1/sketches/ixzkzPgOK
 
 Bueno, en la página mostraron el ruido perlin como una linea que va cambiando suavemente a lo largo del tiempo (como ejemplo) entonces pensé que se podría hacer con un circulo y pues que vaya cambiando suavemente (distintos puntos de ella), tambien le añadí el efecto estela que habíamos visto antes porque me quedó gustando jeje. (para este código pedí un poco de ayuda a chat gpt para entender mejor la realizacion del código y cómo llevarlo a cabo)
 
-```
+``` js
 let noiseMax = 5; // Qué tan caótico es el borde
 let zoff = 0;     // Offset para animación
 
@@ -300,7 +300,7 @@ https://editor.p5js.org/isams2004.1/sketches/oSkS8gj_W
 
 Hola, teniendo en cuenta que debía hacer una obra usando al menos 3 de los conceptos vistos, escogí: ruido perlin, distribucion gaussiana y random. La idea era modificar el "circulo" que había hecho en la actividad pasada pero esta vez que tuviera más alteraciones, quise usar el ruido perlin para deformar el contorno del circulo/flor suavemente, la distribucion gaussiana se usa cuando se hace click, generando un tamaño de base de radio diferente para cada circulo/flor, y el random para que tambien, cada vez que se haga click, cambie el color, la posición y la cantidad de "picos" de la figura. añadí un fondo negro con opacidad porque quería darle una especie de sensación neón, me apoyé en chatgpt para saber bien como implementar todo y entender paso a paso lo que estaba haciendo.
 
-```
+``` js
 let t = 0;
 let petals;
 let baseRadius;
