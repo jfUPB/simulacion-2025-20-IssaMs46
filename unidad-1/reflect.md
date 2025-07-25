@@ -44,6 +44,15 @@ Primero, siento que no me habría estresado tanto JAJJA, y capaz le habría pues
 
 # Actividad 10
 
+## Encuentra un compañero de trabajo.
+Melo, voy a revisar el repo de valeria804
+ 
+## Intercambien las URLs de sus bitácoras de aprendizaje.
+hecho :)
+
+## Dirígete a la entrada de la Actividad 08: creación de obra generativa de tu compañero. Lee su concepto, interactúa con su sketch y analiza su código.
+
+
 
 # Actividad 11
 
