@@ -49,7 +49,19 @@ Primero, siento que no me habría estresado tanto JAJJA, y capaz le habría pues
 
 ## Continuar: ¿Qué actividad, ejemplo o explicación de esta unidad te resultó más reveladora o útil para tu aprendizaje? ¿Qué deberíamos mantener sí o sí?
 
-Me aparece que tener los links guias fue FUNDAMENTAL porque se entiende mejór, contiene ejemplos y el código y siento que eso es vital para entender correctamete un tema.  En cuanto a actividades, siento que la que más me ayudó fue la 8, porque es literal ya hacer todo de 0 y buscar la manera de 
+Me aparece que tener los links guias fue FUNDAMENTAL porque se entiende mejór, contiene ejemplos y el código y siento que eso es vital para entender correctamete un tema.  En cuanto a actividades, siento que la que más me ayudó fue la 8, porque es literal ya hacer todo de 0 y buscar la manera de hacer que todo se conecte entre si. En cuanto a mantener si o si, siento que todo está super bien la verdad JAJAJ
+
+## Dejar de hacer: ¿Hubo alguna actividad o concepto que te pareció redundante, confuso o menos útil? ¿Hay algo que eliminarías o cambiarías por completo?
+Siendo totalmente honesta siento que todo está melo, el hecho de que se permita hacer uso de IA para entender coneptos tambien facilita mucho todo (sin que te hagan el trabajo), no cambiaría nada.
+
+## Empezar a hacer: ¿Qué te faltó en esta unidad? ¿Quizás más ejemplos de artistas, más desafíos técnicos, más teoría? ¿Qué idea tienes para hacerla mejor?
+Siento que sería bueno poner obras de artistas en yt tipo videos y asi y una breve explicacion de qué conceptos usaron y asi, de esa manera podemos ver su aplicacion en el area laboral y tener un poco más de ideas de qué podemos realizar para poryecto final y que conceptos hay que fortalalecer teniendo en cuenta el proyecto final (tambien saber que cosas se pueeden hacer que no habíamos pensado antes y así)
+
+## Balance Teoría-Práctica: ¿Cómo sentiste el equilibrio entre analizar los ejemplos del texto guía y ponerte a programar tus propios sketches? Explica tu respuesta.
+Yo lo sentí bien, si es cierto que me tocó recurrir a ayuda por parte de la IA para escribir ciertas partes del codigo o modificar cosas que no me estaban dando, pero el hecho de que hayan ejemplos y se pueda ver el codigo ayuda porque asi uno puede saber como implementar los diferentes conceptos y se puede experimentar con los valores y ver su resultado..
+
+## Comentario Adicional: ¿Hay algo más que quieras compartir sobre tu experiencia en esta unidad?
+Todo bien, increible curso, la verdad estoy re emocionada y espero poder tener un buen proyecto final para mi portafolio jjiji.
 
 
 
