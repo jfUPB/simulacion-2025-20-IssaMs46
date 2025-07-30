@@ -21,7 +21,7 @@ No funciona porque dentro de p5, positon y velocity son objetos y no numeros (po
 
 cambiamos los this.x this.y por this.position, y ya ahi está implicito el usar position.x y position.y, esto hace que el código sea mucho más compacto y bonito
 
-´´´ 
+``` js
 
 let walker;
 
@@ -66,4 +66,4 @@ class Walker {
   }
 }
 
-´´´
+```
