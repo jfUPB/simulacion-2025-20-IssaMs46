@@ -3,7 +3,7 @@
 ## 🔎 Fase: Set + Seek
 
 
-## Unidad 1
+# Actividad 1
 
 ## ¿Cómo funciona la suma dos vectores en p5.js?
 
@@ -14,12 +14,12 @@ La otra forma es usando p5.Vector.add(), que es crear un nuevo vector, en nuestr
 ## ¿Por qué esta línea position = position + velocity; no funciona?
 No funciona porque dentro de p5, positon y velocity son objetos y no numeros (por lo que no se pueden sumar directamente), si hacemos eso estaríamos concatenando dos objetos como cadenas de texto y pues, en matemáticas eso mucho sentido no tiene. Por esa razón usamos el .add, el cual suma los COMPONENTES  de un vector con los de otro componente por componente.
 
-## Unidad 2
+# Actividad 2
 
 ## Take one of the walker examples from Chapter 0 and convert it to use vectors.
 ¿Qué tuviste que hacer para hacer la conversión propuesta?
 
-cambiamos los this.x this.y por this.position, y ya ahi está implicito el usar position.x y position.y, esto hace que el código sea mucho más compacto y bonito
+cambiamos los this.x this.y por this.position, y ya ahi está implicito el usar position.x y position.y, esto hace que el código sea mucho más compacto y bonito. Ah bueno y también usamos principalmente el position=createVector()
 
 ``` js
 
@@ -67,3 +67,13 @@ class Walker {
 }
 
 ```
+# Actividad 3
+
+## ¿Qué resultado esperas obtener en el programa anterior?
+Al analizar lo que dice el código, se esperaba que primero apareciera el vector con los valores (6,9) y luego con los valores (20,30)
+
+## ¿Qué resultado obtuviste?¿Qué resultado obtuviste?
+ese mismo jeje
+<img width="435" height="156" alt="image" src="https://github.com/user-attachments/assets/2374decc-4e68-4c3f-b686-4ff978a92268" />
+
+## Recuerda los conceptos de paso por valor y paso por referencia en programación. Muestra ejemplos de este concepto en javascript.
