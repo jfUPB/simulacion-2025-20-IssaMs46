@@ -74,6 +74,67 @@ Al analizar lo que dice el código, se esperaba que primero apareciera el vector
 
 ## ¿Qué resultado obtuviste?¿Qué resultado obtuviste?
 ese mismo jeje
+
 <img width="435" height="156" alt="image" src="https://github.com/user-attachments/assets/2374decc-4e68-4c3f-b686-4ff978a92268" />
 
 ## Recuerda los conceptos de paso por valor y paso por referencia en programación. Muestra ejemplos de este concepto en javascript.
+
+
+# Actividad 4
+
+#Actividad 5
+
+``` js
+function setup() {
+    createCanvas(400, 400);
+}
+
+function draw() {
+    background(200);
+
+    let v0 = createVector(50, 50);
+    let v1 = createVector(200, 0);
+    let v2 = createVector(0, 200);
+    
+    let finRojo = p5.Vector.add(v0,v1);
+    let finAzul = p5.Vector.add (v0,v2);
+    let vecVerde = p5.Vector.sub(v2, v1);
+  
+    drawArrow(v0, v1, 'red');
+    drawArrow(v0, v2, 'blue');
+    drawArrow(finRojo, vecVerde, 'green')
+  
+  //moviemiento moradito
+    let raw = (frameCount % 400) / 200; 
+    let t = raw <= 1 ? raw : 2 - raw;  
+    let movimientoMorado = p5.Vector.lerp(finRojo, finAzul, t);
+    let vecMorado = p5.Vector.sub(movimientoMorado, v0);
+  
+    let rojo = color(255, 0, 0);
+    let azul = color(0, 0, 255);
+  
+    let colorMorado = lerpColor(rojo, azul, t);
+    drawArrow(v0, vecMorado, colorMorado);
+}
+
+function drawArrow(base, vec, myColor) {
+    push();
+    stroke(myColor);
+    strokeWeight(3);
+    fill(myColor);
+    translate(base.x, base.y);
+    line(0, 0, vec.x, vec.y);
+    rotate(vec.heading());
+    let arrowSize = 7;
+    translate(vec.mag() - arrowSize, 0);
+    triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);
+    pop();
+}
+```
+
+## ¿Cómo funciona lerp() y lerpColor().
+El lerp, de por si funciona para interpolar suavemente (teniendo en cuenta que vamos a usar un t(tiempo)) entre dos valores, en nuestro caso usamos el lerp para determinar el movimiento del vector morado  (interpolandolo entre finRojo y finAzul en el tiempo t indicado. Y en cuanto al lerpColor, es lo mismo, interpola entre dos valores, en ete caso, el color rojo y el color azul dependiendo de en qué momento del tiempo está (0 es rojo y 1 es azul), entonces eso nos dá como resultado que el vector va cambiando su direccion y su color dependiendo del momento/tiempo en el que se encuentre.
+
+## ¿Cómo se dibuja una flecha usando drawArrow()?
+El draw arrow está basicamente compuesto por (inicio, final, color), le indicamos donde va a iniciar el vector/linea, y donde va a terminar, luego también le indicamos el color y ya :) 
+
