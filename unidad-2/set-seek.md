@@ -79,6 +79,37 @@ ese mismo jeje
 
 ## Recuerda los conceptos de paso por valor y paso por referencia en programación. Muestra ejemplos de este concepto en javascript.
 
+Me acuerdo de 2,  el paso por valor, que es basicamente cuando se pasa una copia del valor, y si se modifica dentro de la funcion, el original no cambia:
+
+``` js
+function cambiaValor(x) {
+  x = 100;
+}
+
+let num = 50;
+cambiaValor(num);
+console.log(num);
+```
+
+y también tenemos el paso por referencia, como lo dice el nombre, se pasa una referencia al objeto original, y si se modifica, el cambio va a fectar al original:
+
+``` js
+function cambiaVector(v) {
+  v.x = 10;
+  v.y = 20;
+}
+
+let vec = createVector(1, 2);
+cambiaVector(vec);
+console.log(vec.toString());
+```
+
+## ¿Qué tipo de paso se está realizando en el código? 
+En ese código yo creeria que estamos haciendo un paso por referencia, porque el objeto posicion se modifica dentro de la función playingVector(), y los cambios afectan directamente al objeto original fuera de la funcion, entonces siento que tiene más sentidoq ue sea un paso por referencia.
+
+## ¿Qué aprendiste?
+
+ Más que todo el hecho de que es importante entender la diferencia  entre pasos para evitar errores cuando no se desea modificar el original o cuando sí se quiere hacerlo a propósito.
 
 # Actividad 4
 
@@ -137,4 +168,5 @@ El lerp, de por si funciona para interpolar suavemente (teniendo en cuenta que v
 
 ## ¿Cómo se dibuja una flecha usando drawArrow()?
 El draw arrow está basicamente compuesto por (inicio, final, color), le indicamos donde va a iniciar el vector/linea, y donde va a terminar, luego también le indicamos el color y ya :) 
+
 
