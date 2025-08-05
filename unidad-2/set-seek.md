@@ -113,7 +113,28 @@ En ese código yo creeria que estamos haciendo un paso por referencia, porque el
 
 # Actividad 4
 
-#Actividad 5
+## ¿Para qué sirve el método mag()? Nota que hay otro método llamado magSq(). ¿Cuál es la diferencia entre ambos? ¿Cuál es más eficiente?
+
+El método mag() sitve para obtener la magnitud/largo de un vector, es decir, nos dice básicamente qué tan grande es el vector.
+
+Ya cuando hablamso de la diferencia entre el método mag() y magSq(), lo que hace magSq() es que devuelve el cuadrado de la magnitud del vector (lo que hace que sea mucho más eficiente porque evita ccalcular la raiz cuadrada), es mucho más útil si solo necesito comparar magnitudes.
+
+## ¿Para qué sirve el método normalize()?
+
+Lo que hace el normalize() es convertir el vector actual en un valor unitario, es decir, mantiene su dirección pero ajusta su magnitud a 1.
+
+## Te encuentras con un periodista en la calle y te pregunta ¿Para qué sirve el método dot()? ¿Qué le responderías en un frase?
+
+Loquisimo ese escenario. Le diría que sirve para medir qué tan alineados están dos vectores, si el resultado es grande, signific que van en direcciones parecidas.
+
+## El método dot() tiene una versión estática y una de instancia. ¿Cuál es la diferencia entre ambas?
+
+La versión de instanci se llama desde un vector: v1.dot(v2) y la versión estática se llama directamente desde p5.Vector: p5.Vector.dot(v1,v2). Según entendí las dos hacen los mismo, soloq ue se llaman de forma distinta.
+
+## Ahora el mismo periodista curioso de antes te pregunta si le puedes dar una intuición geométrica acerca del producto cruz. Entonces te pregunta ¿Cuál es la interpretación geométrica del producto cruz de dos vectores? Tu respuesta debe incluir qué pasa con la orientación y la magnitud del vector resultante.
+
+
+# Actividad 5
 
 ``` js
 function setup() {
@@ -168,5 +189,6 @@ El lerp, de por si funciona para interpolar suavemente (teniendo en cuenta que v
 
 ## ¿Cómo se dibuja una flecha usando drawArrow()?
 El draw arrow está basicamente compuesto por (inicio, final, color), le indicamos donde va a iniciar el vector/linea, y donde va a terminar, luego también le indicamos el color y ya :) 
+
 
 
