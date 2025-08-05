@@ -133,6 +133,16 @@ La versión de instanci se llama desde un vector: v1.dot(v2) y la versión está
 
 ## Ahora el mismo periodista curioso de antes te pregunta si le puedes dar una intuición geométrica acerca del producto cruz. Entonces te pregunta ¿Cuál es la interpretación geométrica del producto cruz de dos vectores? Tu respuesta debe incluir qué pasa con la orientación y la magnitud del vector resultante.
 
+Le diríia que el producto cruz da como resultado un nuevo vector perpendicular a llos dos vectores originales y que su magnitud representa el área del paraleloramo que forman, ya al hablar de direccion esta depende de la regla de la mano derecha, pues eso define su orientacion en espacio.
+
+## ¿Para que te puede servir el método dist()?
+En resumidas cuentas, como dice mas o menos su nombre, sirve para calcular la distancia entre dos vectores, como por ejemplo: calcuular la distancia entre dos puntos en el espacio.
+
+## ¿Para qué sirven los métodos normalize() y limit()?
+normalize () sirve para que uun vector mantenga su direccion pero que tenga magnitud 1
+limit () sirve para restringir la magnitud de un vector a un valor máximo, lo cual nos serviría por ejemplo para limitar la velocidad
+
+
 
 # Actividad 5
 
@@ -189,6 +199,7 @@ El lerp, de por si funciona para interpolar suavemente (teniendo en cuenta que v
 
 ## ¿Cómo se dibuja una flecha usando drawArrow()?
 El draw arrow está basicamente compuesto por (inicio, final, color), le indicamos donde va a iniciar el vector/linea, y donde va a terminar, luego también le indicamos el color y ya :) 
+
 
 
 
