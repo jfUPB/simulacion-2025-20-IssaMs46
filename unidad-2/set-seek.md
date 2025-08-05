@@ -200,6 +200,21 @@ El lerp, de por si funciona para interpolar suavemente (teniendo en cuenta que v
 ## ¿Cómo se dibuja una flecha usando drawArrow()?
 El draw arrow está basicamente compuesto por (inicio, final, color), le indicamos donde va a iniciar el vector/linea, y donde va a terminar, luego también le indicamos el color y ya :) 
 
+# Actividad 6
+
+## Cuál es el concepto del marco motion 101 y cómo se interpreta geométricamente.
+
+El motion 101 es un marco básico para simular movimiento usando vectores, y es que básicamente se tiene en cuenta que cada objeto riene una posicion, una velocidad y una acelaracion (y todas estan representadas por vectores.
+
+Ya si lo buscamos interpretar geométricamente, vendria siendo mas o menos:
+*la posicion determina en dónde está el objeto en el espacio, la velocidad indica hacia donde se mueve y qué tan rápiddo se está moviendo, y la acelaracion modifica la velocidad.
+
+La forma en la que funciona es que cada frame se actualiza prmero la velocidad con la acelaracion, y luego la posicion con la nueva velocidad y así continuamente.
+
+## ¿Cómo se aplica motion 101 en el ejemplo?
+
+En ese ejemplo se crea un objeto que tiene sus propios vecctores de posicion, velocidad y aceleracion, luego, cada vez que se llama el método update(), se suma la aceleracion a la velocidad y luego la velocidad a la posicion (haciendo uso claro del motion 101). Otra cosa que podemos ver es que la aceleracion es constante y que geométricamente se ve como un punto qye va aumentando su velocidad y se va desplazando mas rapido por la pantalla. (pues, visuallmente se ve como los cambios de aceleracion y velocidad afectan directamente el comportamiento del movimiento)
+
 
 
 
