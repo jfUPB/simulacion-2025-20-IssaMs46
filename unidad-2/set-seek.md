@@ -215,6 +215,17 @@ La forma en la que funciona es que cada frame se actualiza prmero la velocidad c
 
 En ese ejemplo se crea un objeto que tiene sus propios vecctores de posicion, velocidad y aceleracion, luego, cada vez que se llama el método update(), se suma la aceleracion a la velocidad y luego la velocidad a la posicion (haciendo uso claro del motion 101). Otra cosa que podemos ver es que la aceleracion es constante y que geométricamente se ve como un punto qye va aumentando su velocidad y se va desplazando mas rapido por la pantalla. (pues, visuallmente se ve como los cambios de aceleracion y velocidad afectan directamente el comportamiento del movimiento)
 
+# Actividad 7
+
+-Aceleración constante: podemos ver que el circulo inicia moviendose lentamente y luego a medida que va pasando el tiempo, se va mmoviendo más rapido porque la aceleracion se acumula en la velocidad, básicamente es un movimiento ordenado y predecible.
+
+-Aceleración aleatoria: la aceleracion cambia de forma impredecible, por loq ue tanto la direccion como la velocidad del circulo cambian cosntantemente, se ve como un movimiento erratico y desorganizado, sin trayectoria clara.
+
+-Aceleracion hacia el mouse: Básicamente el circulo se ve atraido hacia la posicion del mouse (persiguiendolo, o al menos haciendo el intento), lo que hace es que en cada frame se calcula un vector desde la posicion del circulo hacia la posicion del mouse, y ese vector se usa como aceleracion, haciendo que el circulo cambie su trayectoria dependiendo de la posicion del mouse.
+
+gracias:) 
+
+
 
 
 
