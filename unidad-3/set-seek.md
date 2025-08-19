@@ -55,3 +55,123 @@ si lo usamos de esa forma, cuando queramos moficicar friction, tambien vamos a e
 si hablamos del codigo:
 -let friction = this.velocity.copy() es por valor, osea, se crea un nuevo objeto con los mismos datos.
 -let friction  = this.velocity es por referencia, entonces ambas variables apuntan al mismo objeto en memoria.
+
+
+# Actividad 9
+
+# FRICCIÓN
+
+## Explica cómo modelaste cada fuerza.
+La parte de la friccion la hice teniendo en cuenta que esta se modela como una fuerza opuesta al movimiento, en este caso, opuesta al movimiento del bloque. Ya hablando del código, lo que hago es copiar el vector velocidad, lo normalizo y lo multiplico por -0.1 para que quede en el sentido contrario.
+
+## Conceptualmente cómo se relaciona la fuerza con la obra generativa.
+en mi caso, mi obra consta de un cubo el cual puede ser empujado muchas veces pero tarde o temprano va a ser detenido por la friccion. En esta obra, la fuerza de friccion es una especie de forma de expresion (si lo demos desde una forma un tanto rebuscada jaj), puesto a que define el ritmo con el que el cubo aparece, se desplaza, frena y se desaparece, toda interaccion depende enteramente de las perturbaciones que genere el usuario, cuanto empuje el cubo y durante cuanto tiempo.
+
+## Copia el enlace a tu ejemplo en p5.js.
+https://editor.p5js.org/isams2004.1/sketches/WE6Kna-YK
+
+## Copia el enlace a tu ejemplo en p5.js.
+
+``` js
+let mover;
+
+function setup()
+{
+  createCanvas(600, 200);
+  mover = new Mover();
+}
+
+function draw()
+{
+  background(240);
+
+  // Dibujar el suelo
+  fill(200);
+  rect(0, height - 40, width, 40);
+
+  // Aplicar fricción si el bloque está en movimiento
+  let friction = mover.velocity.copy();
+  if (friction.mag() > 0)
+{
+    friction.normalize();
+    friction.mult(-0.1); // coeficiente de fricción
+    mover.applyForce(friction);
+  }
+
+  mover.update();
+  mover.display();
+}
+
+// Al hacer clic, damos un "empujón" al bloque
+function mousePressed()
+{
+  let push = createVector(2, 0); // fuerza hacia la derecha
+  mover.applyForce(push);
+}
+
+class Mover
+{
+  constructor()
+{
+    this.position = createVector(50, height - 60);
+    this.velocity = createVector(0, 0);
+    this.acceleration = createVector(0, 0);
+    this.mass = 1;
+    this.size = 40;
+  }
+
+  applyForce(force)
+{
+    let f = p5.Vector.div(force, this.mass);
+    this.acceleration.add(f);
+  }
+
+  update()
+{
+    this.velocity.add(this.acceleration);
+    this.position.add(this.velocity);
+    this.acceleration.mult(0);
+
+    // Mundo envolvente
+    if (this.position.x > width)
+{
+      this.position.x = -this.size;
+    }
+    if (this.position.x < -this.size)
+{
+      this.position.x = width;
+    }
+  }
+
+  display()
+{
+    fill(100, 150, 250);
+    rect(this.position.x, this.position.y, this.size, this.size);
+  }
+}
+
+
+``` 
+
+## Captura una imagen representativa de tu ejemplo.
+
+la verdad no se ve muy  bien pero le juro que sirve jajaj
+<img width="669" height="227" alt="image" src="https://github.com/user-attachments/assets/34fe8c1f-808c-423c-b877-980c30fd8b80" />
+
+
+# Resistencia del aire y de fluidos.
+
+## Explica cómo modelaste cada fuerza.
+La resistencuia de los fluidos se modela como una fuerza opuesta al movimiento, y tambien hayq ue tener en cuenta que la magnitud depende de la velocidad al cuaderado (y del medio en el que se encuentra el objeto), lo hice usando la fórmula: fuerza de resistencia = -coeficiente de resistecia del medio * magnitud de la velocidad al cuiadrado * direcciond el movimiento.
+
+En mi ejercicio dividi el espacio en dos, aire y agua,e sto con la finalidad de mostrar visualmente al diferencia de la resistencia en ambos medios (siendo mayor la resistencia en el eagua)
+
+## Relación conceptual con la obra generativa
+
+
+
+
+
+
+
+  
