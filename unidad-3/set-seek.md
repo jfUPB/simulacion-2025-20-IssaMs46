@@ -167,6 +167,110 @@ La resistencuia de los fluidos se modela como una fuerza opuesta al movimiento, 
 En mi ejercicio dividi el espacio en dos, aire y agua,e sto con la finalidad de mostrar visualmente al diferencia de la resistencia en ambos medios (siendo mayor la resistencia en el eagua)
 
 ## Relación conceptual con la obra generativa
+La obra es una especie de juego visual entre distintos medios, en este caso, aire y agua. En el aire, el circulo desciende rapidamente por la pocca resistencia que presenta el aire, y en el agua, el circulo se mueve mas lento y controlado, básicamente la fuerza de resistencia es el elemento expresivo, transformando la experiencia del movimiento y el ritmo de la animacion  (y bacano porque se puede usar en otras ocasiones) también el usuario puede interactuar por medio de un click haciendo que la pelotita vuelva a su posicion inicial.
+
+## Copia el enlace a tu ejemplo en p5.js.
+https://editor.p5js.org/isams2004.1/sketches/bX_DE7_07
+
+## Copia el código.
+
+``` js
+let mover;
+let cAir = 0.01;   // coeficiente en aire
+let cWater = 0.2;  // coeficiente en agua
+
+function setup() 
+{
+  createCanvas(600, 400);
+  mover = new Mover();
+}
+
+function draw() 
+{
+  background(240);
+
+  // Dibujar zona de agua
+  fill(180, 220, 255);
+  rect(0, height / 2, width, height / 2);
+
+  // Gravedad
+  let gravity = createVector(0, 0.2);
+  mover.applyForce(gravity);
+
+  // Calcular resistencia dependiendo de la zona
+  let drag = mover.velocity.copy();
+  if (drag.mag() > 0) {
+    drag.normalize();
+    let speedSq = mover.velocity.magSq();
+    
+    // Aire en la parte superior
+    if (mover.position.y < height / 2) 
+    {
+      drag.mult(-cAir * speedSq);
+    } 
+    // Agua en la parte inferior
+    else 
+    {
+      drag.mult(-cWater * speedSq);
+    }
+    mover.applyForce(drag);
+  }
+
+  mover.update();
+  mover.display();
+}
+
+// Reiniciar con clic
+function mousePressed() 
+{
+  mover = new Mover();
+}
+
+class Mover 
+{
+  constructor()
+  {
+    this.position = createVector(width / 2, 50);
+    this.velocity = createVector(0, 0);
+    this.acceleration = createVector(0, 0);
+    this.mass = 1;
+    this.size = 30;
+  }
+
+  applyForce(force) 
+  {
+    let f = p5.Vector.div(force, this.mass);
+    this.acceleration.add(f);
+  }
+
+  update() 
+  {
+    this.velocity.add(this.acceleration);
+    this.position.add(this.velocity);
+    this.acceleration.mult(0);
+
+    // Limite suelo
+    if (this.position.y > height - this.size / 2) 
+    {
+      this.position.y = height - this.size / 2;
+      this.velocity.mult(0);
+    }
+  }
+
+  display() 
+  {
+    fill(250, 100, 100);
+    ellipse(this.position.x, this.position.y, this.size);
+  }
+}
+
+```
+
+## Captura una imagen representativa de tu ejemplo.
+<img width="672" height="446" alt="image" src="https://github.com/user-attachments/assets/37c859d7-8152-4eb7-96e6-65855ff87987" />
+
+
+
 
 
 
@@ -175,3 +279,4 @@ En mi ejercicio dividi el espacio en dos, aire y agua,e sto con la finalidad de 
 
 
   
+
