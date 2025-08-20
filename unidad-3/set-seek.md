@@ -270,6 +270,124 @@ class Mover
 <img width="672" height="446" alt="image" src="https://github.com/user-attachments/assets/37c859d7-8152-4eb7-96e6-65855ff87987" />
 
 
+# Atracción gravitacional
+
+## Explica cómo modelaste cada fuerza.
+Utilicé la ley de gravitacion de Newton para calcular la fuerza de atraccion entre un planeta fijo y una particula/planeta mas chiquitito. en cada frame calculo la direccion del planeta chiquito hacia el planeta grande, calculo la magnitud y luego aplico la fuerza al planetita chiquito.
+
+
+## Conceptualmente cómo se relaciona la fuerza con la obra generativa.
+Es una especie de "baile" en torno a la fuerza de gravitacion que se genera por el planeta grande, tambien el hecho de que con cada click se lanza una nueva partícula (borrando la anterior), el planeta pequeño se ve atraido y va cambiando su trrayectoria y aceleracion teniendo en cuenta la gravedad que ejerce el planeta grande, se crean acercamientos y el patron nace de la fuerza y de la interaccion que tiene el usuario, alterando condiiciones iniciales.
+
+## Copia el enlace a tu ejemplo en p5.js.
+
+https://editor.p5js.org/isams2004.1/sketches/J0dCEN3PJ
+
+##  Copia el código.
+
+``` js
+let attractor;
+let mover;
+
+function setup() 
+{
+  createCanvas(600, 400);
+  attractor = new Attractor(width / 2, height / 2, 20);
+  mover = new Mover(random(width), random(height / 2), 2);
+}
+
+function draw() 
+{
+  background(240);
+
+  // Mostrar el planeta grandote
+  attractor.display();
+
+  // Calcular la fuerza de atracción
+  let force = attractor.attract(mover);
+  mover.applyForce(force);
+
+  // Actualizar y mostrar la partícula
+  mover.update();
+  mover.display();
+}
+
+// Reiniciar con click
+function mousePressed() 
+{
+  mover = new Mover(random(width), random(height), 2);
+}
+
+class Mover 
+{
+  constructor(x, y, m) 
+  {
+    this.position = createVector(x, y);
+    this.velocity = createVector(0, 0);
+    this.acceleration = createVector(0, 0);
+    this.mass = m;
+  }
+
+  applyForce(force) 
+  {
+    let f = p5.Vector.div(force, this.mass);
+    this.acceleration.add(f);
+  }
+
+  update() 
+  {
+    this.velocity.add(this.acceleration);
+    this.position.add(this.velocity);
+    this.acceleration.mult(0);
+  }
+
+  display() 
+  {
+    fill(100, 150, 255);
+    noStroke();
+    ellipse(this.position.x, this.position.y, this.mass * 8);
+  }
+}
+
+class Attractor 
+{
+  constructor(x, y, m) {
+    this.position = createVector(x, y);
+    this.mass = m;
+    this.G = 1;
+  }
+
+  attract(m) 
+  {
+    let force = p5.Vector.sub(this.position, m.position);
+    let distance = force.mag();
+
+    // Limitar la distancia para evitar resultados extremos
+    distance = constrain(distance, 5, 25);
+
+    force.normalize();
+    let strength = (this.G * this.mass * m.mass) / (distance * distance);
+    force.mult(strength);
+    return force;
+  }
+
+  display() 
+  {
+    fill(255, 180, 80);
+    noStroke();
+    ellipse(this.position.x, this.position.y, this.mass * 2);
+  }
+}
+```
+
+## Captura una imagen representativa de tu ejemplo.
+
+<img width="680" height="442" alt="image" src="https://github.com/user-attachments/assets/d051e88f-2209-41ad-8a58-6647b8b48613" />
+
+muchasgracias:D
+
+
+
 
 
 
@@ -279,4 +397,5 @@ class Mover
 
 
   
+
 
