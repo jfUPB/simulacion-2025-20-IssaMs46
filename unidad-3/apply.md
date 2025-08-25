@@ -30,7 +30,7 @@ Se actualizan las velocidades y posiciones con integracion sencilla (euler) y ta
 https://editor.p5js.org/isams2004.1/full/Wn3-NCpYs
 
 ##Copia el código.
-´´´js 
+``` js 
 let bodies = [];
 let G = 1.5; // Constante gravitacional
 let palette = [];
@@ -157,4 +157,10 @@ class Body {
   }
 }
 
-´´´ 
+```
+
+## Captura una imagen representativa de tu ejemplo.
+
+![Uploading image.png…]()
+
+
