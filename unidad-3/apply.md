@@ -161,7 +161,9 @@ class Body {
 
 ## Captura una imagen representativa de tu ejemplo.
 
-<img width="667" height="674" alt="image" src="https://github.com/user-attachments/assets/6c4a18bb-0fcb-478e-8ae8-d31513c0e818" />
+<img width="668" height="667" alt="image" src="https://github.com/user-attachments/assets/95f5a18e-1b56-4c92-bcae-d8748318db67" />
+
+
 
 
 
