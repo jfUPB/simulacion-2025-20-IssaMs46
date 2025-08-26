@@ -161,6 +161,8 @@ class Body {
 
 ## Captura una imagen representativa de tu ejemplo.
 
-![Uploading image.png…]()
+<img width="667" height="674" alt="image" src="https://github.com/user-attachments/assets/6c4a18bb-0fcb-478e-8ae8-d31513c0e818" />
+
+
 
 
