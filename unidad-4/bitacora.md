@@ -7,48 +7,52 @@
 > 
 >De la unidad 4 tomé manejo de ángulos, coordenadas polares, funciones sinusoides y ondas.
 
--Con atan2 calculo el ángulo del mouse para rotar todo el sistema.
+> -Con atan2 calculo el ángulo del mouse para rotar todo el sistema.
 
--Uso coordenadas polares (r*cosθ, r*sinθ) para colocar las bolitas alrededor del círculo.
+> -Uso coordenadas polares (r*cosθ, r*sinθ) para colocar las bolitas alrededor del círculo.
 
--El contorno se deforma con una función sinusoidal (sin(theta*freq + offset)), generando ondulación.
+> -El contorno se deforma con una función sinusoidal (sin(theta*freq + offset)), generando ondulación.
 
 
 Además, implementé ondas expansivas que crecen y se desvanecen cuando el mouse está presionado.
 
 * ¿Qué concepto de la unidad 3 y cómo lo aplicaste en la obra?
 > Tu respuesta aquí:
+> 
 >De la unidad 3 trabajé con el concepto de paso por referencia.
 
--El arreglo waves almacena objetos (cada onda con sus atributos) que se actualizan directamente en cada frame: su radio aumenta y su transparencia disminuye sin necesidad de crear copias.
--Esto me permitió mantener y modificar múltiples ondas de manera eficiente.
+> -El arreglo waves almacena objetos (cada onda con sus atributos) que se actualizan directamente en cada frame: su radio aumenta y su transparencia disminuye sin necesidad de crear copias.
+> -Esto me permitió mantener y modificar múltiples ondas de manera eficiente.
 
 * ¿Qué concepto de la unidad 2 y cómo lo aplicaste en la obra?
 > Tu respuesta aquí:
+> 
 >De la unidad 2 usé principalmente vectores y el enfoque motion 101.
 
--Apliqué vectores en la conversión polar a cartesiano para ubicar cada punto del contorno.
+> -Apliqué vectores en la conversión polar a cartesiano para ubicar cada punto del contorno.
 
--Motion 101 está presente en la forma en que las variables de estado (offset, rotationAngle, el crecimiento de las ondas) cambian progresivamente en cada frame, creando movimiento fluido y acumulativo.
+> -Motion 101 está presente en la forma en que las variables de estado (offset, rotationAngle, el crecimiento de las ondas) cambian progresivamente en cada frame, creando movimiento fluido y acumulativo.
 
 * ¿Qué concepto de la unidad 1 y cómo lo aplicaste en la obra?
 > Tu respuesta aquí:
+> 
 >De la unidad 1 utilicé distribución normal y ruido Perlin.
 
--Con randomGaussian asigno valores a los canales rojo y azul, generando variaciones suaves y con cierta tendencia alrededor de un promedio.
+> -Con randomGaussian asigno valores a los canales rojo y azul, generando variaciones suaves y con cierta tendencia alrededor de un promedio.
 
--Con noise asigno el canal verde, lo que produce una variación continua y orgánica en el tiempo.
--Estos dos enfoques combinados permiten que los colores sean generativos, únicos y dinámicos.
+> -Con noise asigno el canal verde, lo que produce una variación continua y orgánica en el tiempo.
+> -Estos dos enfoques combinados permiten que los colores sean generativos, únicos y dinámicos.
 
 ## ¿Cómo resolviste la interacción?
 > Tu respuesta aquí:
+> 
 >La interacción se resolvió con el mouse:
 
--El movimiento del mouse controla la rotación global de la obra a partir del ángulo calculado con atan2.
+> -El movimiento del mouse controla la rotación global de la obra a partir del ángulo calculado con atan2.
 
--Al presionar el mouse se incrementa la amplitud de las ondas sinusoidales, haciendo que la figura se expanda visualmente.
+> -Al presionar el mouse se incrementa la amplitud de las ondas sinusoidales, haciendo que la figura se expanda visualmente.
 
--Además, en cada clic se generan ondas expansivas que se propagan desde las bolitas, representando un pulso emitido por la acción del usuario.
+> -Además, en cada clic se generan ondas expansivas que se propagan desde las bolitas, representando un pulso emitido por la acción del usuario.
 
 ## Enlace a la obra en el editor de p5.js
 
@@ -153,6 +157,7 @@ function draw() {
 
 
 <img width="867" height="668" alt="Captura de pantalla 2025-09-04 222601" src="https://github.com/user-attachments/assets/51297104-3d0c-4247-91d6-d7ee7ab7a5e6" />
+
 
 
 
