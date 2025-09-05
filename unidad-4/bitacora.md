@@ -4,6 +4,7 @@
 
 * ¿Qué concepto de la unidad 4 y cómo lo aplicaste en la obra?
 > Tu respuesta aquí:
+> 
 >De la unidad 4 tomé manejo de ángulos, coordenadas polares, funciones sinusoides y ondas.
 
 -Con atan2 calculo el ángulo del mouse para rotar todo el sistema.
@@ -152,6 +153,7 @@ function draw() {
 
 
 <img width="867" height="668" alt="Captura de pantalla 2025-09-04 222601" src="https://github.com/user-attachments/assets/51297104-3d0c-4247-91d6-d7ee7ab7a5e6" />
+
 
 
 
