@@ -14,7 +14,7 @@
 > -El contorno se deforma con una función sinusoidal (sin(theta*freq + offset)), generando ondulación.
 
 
-Además, implementé ondas expansivas que crecen y se desvanecen cuando el mouse está presionado.
+> Además, implementé ondas expansivas que crecen y se desvanecen cuando el mouse está presionado.
 
 * ¿Qué concepto de la unidad 3 y cómo lo aplicaste en la obra?
 > Tu respuesta aquí:
@@ -157,6 +157,7 @@ function draw() {
 
 
 <img width="867" height="668" alt="Captura de pantalla 2025-09-04 222601" src="https://github.com/user-attachments/assets/51297104-3d0c-4247-91d6-d7ee7ab7a5e6" />
+
 
 
 
