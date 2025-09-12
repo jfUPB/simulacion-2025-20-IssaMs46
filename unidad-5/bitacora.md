@@ -42,6 +42,19 @@ desaparicion, dentro del run(), el sistema recorre el arreglo de particulas de a
 ya en cuanto a la memoria, SIGUE SIENDO LO MISMO, cuando es eliminada del arreglo la particula, no hay referencias y el garbge collecot de js elimina su memoria automaticamete, cabe resaltar que el uso de fuerzas no altera este proceso.
 
 
+## 5. Analiza el ejemplo 4.7: a Particle System with a Repeller.
+¿Cómo se está gestionando la creación y la desaparción de las partículas y cómo se gestiona la memoria en cada una de las simulaciones?
+
+Para la creacion, en cada cuadro draw() el particleSystem invoca addParticle, que genera una nueva particula, y la agrega al arreglo interno, como hemos estado haciendo en puntos anteriores. pero antes de actualizar cada particula, se calcula y apica la fuerza de repulsion que proviene del objeto repeller
+
+Ya cuando hablamos de la desaparicio, sigue siendo lo mismo que en los otros ejercicios AHHH, en el metodo run el sistema recorre el arreglo de particulas de atras hacia adelante, a cada particula se le aplican las fuerzas de gravedad y repulsion, se acualiza con run y si la particula en isDead da true, se elimina con el splice
+
+la gestion de la memoria, LO MISMOOOOO, con el garbage collector.
+
+
+
+
+
 
 
 
