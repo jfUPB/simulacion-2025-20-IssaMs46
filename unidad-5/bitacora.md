@@ -23,6 +23,20 @@ La gestion de la desaparicion es que el sistema recorre la lista de particulas a
 La parte de la memoria es que al remover o eliminar una particula de su lista o del arreglo globarl, las referencias quedan inaccesibles entonces el garbage collector de js las agarra y las elimina basicamente, liberando la memoria automaticamente.
 
 
+## 3. Analiza el ejemplo 4.5: a Particle System with Inheritance and Polymorphism.
+¿Cómo se está gestionando la creación y la desaparción de las partículas y cómo se gestiona la memoria en cada una de las simulaciones?
+
+la creacion es que en cadacuadro draw() en cada PartycleSystem se llama addPArticle(), y ese metodo decide aleatoriamente si a nueva particula va a ser de clase paticle o de la subclase confettu, y ya cuando decide la añade al arreglo interno de particle.
+
+en cuanto a la desaparicion, en el metodo run() se recorre la lista de particulas de atras hacia adelante, como amos visto anteriormente, a cada una se le llama run() que básicamente dibuja y acualiza, si la particula tiene que isDead es true, se elimina con el particles.splice(i,1)
+
+ya con lo de la memoria, es lo mismo, cuando la particula muere se elimina del arreglo y ya no tiene ninguna referencia entonces el garbage collector de js elimina su memoria.
+
+
+
+
+
+
 
 
 
