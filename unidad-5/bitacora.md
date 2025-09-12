@@ -52,6 +52,63 @@ Ya cuando hablamos de la desaparicio, sigue siendo lo mismo que en los otros eje
 la gestion de la memoria, LO MISMOOOOO, con el garbage collector.
 
 
+# EXPERIMENTOS
+
+## ejemplo 4.2: an Array of Particles. 
+Voy a usar el concepto de movimiento básico y vectores, usando atraccion hacia la posicion del mouse. queria que siguierea siendo tipo cascada, pero que esta vez fuera un poco más dinámica y por eso tomé la decision de que fuera interactivo con el mouse. lo que hago es normalizar el vextor y escalarlo con setMAg(0.5) para que la fuerza de magnitud sea constante y ya ahi si luego se lo aplico a la particula con el applyForce().
+En la clase de la particula, la fuerza se aculula en la aceleracion y en el update la aceleracion modifica la velocidad y la posicion, ya despues de cada frame la aceleracion se reinicia para que no explote.
+
+Añadi en el draw un calculo de un vector de direccion desde la posiicion de cada particula hasta la posicion actual del mouse, con:
+
+``` js
+let dir = createVector(mouseX - p.position.x, mouseY - p.position.y);
+dir.setMag(0.05);
+p.applyForce(dir);
+```
+
+link: [https://editor.p5js.org/isams2004.1/sketches/71NCsnPS-](https://editor.p5js.org/isams2004.1/sketches/71NCsnPS-)
+
+el codigo commpleto es el siguiente:
+
+``` js
+let particles = [];
+
+function setup() {
+  createCanvas(640, 240);
+}
+
+function draw() {
+  background(255);
+  // crear una nueva partícula en cada frame
+  particles.push(new Particle(width / 2, 20));
+
+  // recorrer de atrás hacia adelante para eliminar las muertas
+  for (let i = particles.length - 1; i >= 0; i--) {
+    let p = particles[i];
+
+    // --- Fuerza hacia el mouse ---
+    let dir = createVector(mouseX - p.position.x, mouseY - p.position.y);
+    dir.setMag(0.05);       // intensidad de la atracción
+    p.applyForce(dir);      // aplicar aceleración hacia el mouse
+
+    p.run();
+    if (p.isDead()) {
+      particles.splice(i, 1);
+    }
+  }
+}
+```
+
+<img width="657" height="259" alt="image" src="https://github.com/user-attachments/assets/750ec8bf-b9f5-404f-8152-35a0efd862c6" />
+
+
+
+
+
+
+
+
+
 
 
 
