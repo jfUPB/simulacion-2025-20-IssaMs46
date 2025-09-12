@@ -107,7 +107,7 @@ function draw() {
 
 En este caso busque aplicar el ruido perlin, en la funcion mousePressed() , loq eu hago es generar una coordenada horizontal para el nuevo sistema usando el ruido perlin, la idea es tener un recorrido de lado a lado en ellienzo pero no lo logré muy bien, se supone que eso lo hago rampeando la salida de [0,1], a [-1,1] ara lo del recorrido.
 
-la idea era que la posicion de origen de cada nuevo sistema oscilara, pero pues no me dio, ya solo se usa el ruido perlin ara determinar su nueva posicion., el ruido perlinde por si da variaciones continuas y naturalles, capaz no se ve muy bien porque hay muchas particulas, no lo se la verdad.
+la idea era que la posicion de origen de cada nuevo sistema oscilara, pero pues no me dio, ya solo se usa el ruido perlin ara determinar su nueva posicion., el ruido perlinde por si da variaciones continuas y naturalles, capaz no se ve muy bien porque hay muchas particulas, no lo se la verdad. INTENTAR GAUSS
 
 lo que cambia es mas que todo esta parte:
 
@@ -214,6 +214,7 @@ class Confetti extends Particle {
 
 en la imagen se ve casi que igual pero al darle play se ve levemente diferente
 <img width="632" height="270" alt="image" src="https://github.com/user-attachments/assets/9f5a2b40-57d3-4753-b984-1b9e0a91797c" />
+
 
 
 
