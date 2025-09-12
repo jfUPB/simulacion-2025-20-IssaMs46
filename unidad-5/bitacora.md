@@ -158,6 +158,62 @@ Link al codigo: [https://editor.p5js.org/isams2004.1/sketches/wBdu2jdth](https:/
 
 <img width="599" height="265" alt="image" src="https://github.com/user-attachments/assets/933aaecb-293b-4ceb-adc9-0286cb713b0e" />
 
+## ejemplo 4.5: a Particle System with Inheritance and Polymorphism.
+
+LO que quería hacer era que los cuadrados dieran vueltas mas notoriamente usando angulos, en ete caso theta, el cual va a aumentar de foma constante. lo que stoy repasando es el movimiento rotacional, aqui lo aplico de fona en que el angulo cambie con el tiempo para producir una especie de giro uniforme.
+
+los cambios que hice fueron en la subclase confetti, y fueron los siguientes:
+
+``` js
+this.theta += 0.1;   //  para la velocidad de giro
+```
+
+y en show puse:
+
+``` js
+push();
+translate(this.position.x, this.position.y);
+rotate(this.theta);
+square(0, 0, 12);
+pop();
+```
+entonces si, pues el cuadrado se dibuje en el mismo luhar pero rote en torno a su propio cento o eje usando el angulo theta.
+
+
+llink al codigo: [https://editor.p5js.org/isams2004.1/sketches/GVLZ28aKc](https://editor.p5js.org/isams2004.1/sketches/GVLZ28aKc)
+
+codigo de la subclase que fue el que cambió:
+
+``` js
+// Child class constructor
+class Confetti extends Particle {
+  constructor(x, y) {
+    super(x, y);
+    this.theta = 0; // ángulo de rotación que irá creciendo
+  }
+
+  update() {
+    super.update();
+    this.theta += 0.1; // controla la velocidad de giro
+  }
+
+  // Override the show method
+  show() {
+    rectMode(CENTER);
+    fill(127, this.lifespan);
+    stroke(0, this.lifespan);
+    strokeWeight(2);
+    push();
+    translate(this.position.x, this.position.y);
+    rotate(this.theta);   // usar el ángulo acumulado, no el mapeo por x
+    square(0, 0, 12);
+    pop();
+  }
+}
+```
+
+en la imagen se ve casi que igual pero al darle play se ve levemente diferente
+<img width="632" height="270" alt="image" src="https://github.com/user-attachments/assets/9f5a2b40-57d3-4753-b984-1b9e0a91797c" />
 
 
 
