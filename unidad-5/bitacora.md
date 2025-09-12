@@ -103,8 +103,60 @@ function draw() {
 
 
 
+## ejemplo 4.4: a System of Systems.
+
+En este caso busque aplicar el ruido perlin, en la funcion mousePressed() , loq eu hago es generar una coordenada horizontal para el nuevo sistema usando el ruido perlin, la idea es tener un recorrido de lado a lado en ellienzo pero no lo logré muy bien, se supone que eso lo hago rampeando la salida de [0,1], a [-1,1] ara lo del recorrido.
+
+la idea era que la posicion de origen de cada nuevo sistema oscilara, pero pues no me dio, ya solo se usa el ruido perlin ara determinar su nueva posicion., el ruido perlinde por si da variaciones continuas y naturalles, capaz no se ve muy bien porque hay muchas particulas, no lo se la verdad.
+
+lo que cambia es mas que todo esta parte:
 
 
+``` js
+let n = noise(frameCount * 0.02) * 2 - 1;     // ruido en [-1,1]
+let x = width / 2 + n * (width / 2);          // centro + amplitud mitad del ancho
+emitters.push(new Emitter(x, 20));
+
+```
+
+y este es el codigo completo:
+
+``` js
+// The Nature of Code – Ejemplo 4.4 modificado
+// Sistema de sistemas con oscilación lateral marcada
+// del origen de cada nuevo emisor usando ruido Perlin.
+
+let emitters = [];
+
+function setup() {
+  createCanvas(640, 240);
+  createP("haz click para agregar particle systems");
+}
+
+function draw() {
+  background(255);
+
+  // ejecutar y actualizar cada sistema existente
+  for (let emitter of emitters) {
+    emitter.run();
+    emitter.addParticle();
+  }
+}
+
+function mousePressed() {
+  // --- NUEVO: ruido Perlin remapeado para una oscilación amplia ---
+  // noise() -> [0,1]  →  *2 -1  →  [-1,1]
+  // luego lo centro en width/2 y le doy amplitud width/2
+  let n = noise(frameCount * 0.02) * 2 - 1;
+  let x = width / 2 + n * (width / 2);
+  //let y = 20;
+  emitters.push(new Emitter(x, 20));
+}
+
+```
+Link al codigo: [https://editor.p5js.org/isams2004.1/sketches/wBdu2jdth](https://editor.p5js.org/isams2004.1/sketches/wBdu2jdth)
+
+<img width="599" height="265" alt="image" src="https://github.com/user-attachments/assets/933aaecb-293b-4ceb-adc9-0286cb713b0e" />
 
 
 
