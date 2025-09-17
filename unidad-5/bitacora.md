@@ -216,6 +216,47 @@ en la imagen se ve casi que igual pero al darle play se ve levemente diferente
 <img width="632" height="270" alt="image" src="https://github.com/user-attachments/assets/9f5a2b40-57d3-4753-b984-1b9e0a91797c" />
 
 
+## Ejemplo 4.6 a Particle System with Forces.
+
+Quería cambiar un poco la trayectoria de las particulas por lo que usé un atrractor, basicamente en el draw()principal, antes de actualizar las particulas loque hago es calcular la fuerza de atraccion de cada particula hacia el attractor y ya despues se la aplico, el ApplyForce añade esa fuerza a la aceleracion de cada parrticula, haciendo que en el update la velocidad y la posicion cambien teniendo en cuenta esa aceleracion.
+
+esto repasa lo de la le de gravitacion :)
+ añadí varias cosas, pero principalmente la clase de attractor
+ 
+``` js
+// Clase Attractor: aplica fuerza de atracción tipo Ley de Newton
+class Attractor {
+  constructor(x, y) {
+    this.pos = createVector(x, y);
+    this.mass = 20;   // masa del atractor
+    this.G = 1;       // constante gravitacional simplificada
+  }
+
+  attract(p) {
+    // vector que apunta del objeto p al Attractor
+    let force = p5.Vector.sub(this.pos, p.pos);
+    let distance = force.mag();
+    // limitar la distancia para evitar fuerzas extremas
+    distance = constrain(distance, 5, 25);
+    force.normalize();
+    // Ley de la gravitación: F = G * m1 * m2 / d^2
+    let strength = (this.G * this.mass * p.mass) / (distance * distance);
+    force.mult(strength);
+    return force;
+  }
+
+  display() {
+    noStroke();
+    fill(50, 150, 255);
+    ellipse(this.pos.x, this.pos.y, this.mass * 2);
+  }
+}
+```
+
+LINK: [https://editor.p5js.org/isams2004.1/sketches/AnsGtM80g](https://editor.p5js.org/isams2004.1/sketches/AnsGtM80g)
+
+
+<img width="578" height="246" alt="image" src="https://github.com/user-attachments/assets/0555f799-8fdc-4d84-8621-08a03c63ed82" />
 
 
 
