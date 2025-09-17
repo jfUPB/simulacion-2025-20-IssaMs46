@@ -259,6 +259,79 @@ LINK: [https://editor.p5js.org/isams2004.1/sketches/AnsGtM80g](https://editor.p5
 <img width="578" height="246" alt="image" src="https://github.com/user-attachments/assets/0555f799-8fdc-4d84-8621-08a03c63ed82" />
 
 
+## Ejemplo 4.7: a Particle System with a Repeller.
+
+Lo que queria era implementar algo de la unidad 4, en este caso las funciones sinusoides, tenia la idea de utilizarlas para la trayectoria por asi decirlo de las particulas, o para afectar su movimiento y que no se viera tan en linea recta,para esto en la claseparticle añadi variables para guardar la posicion original x, a amplitud, lafrecuencia y la fase inicial aleatoria, ya en el metodo update modifiqupe la coordenada horizontal con 
+
+```js
+this.position.x = this.originX + this.amp * sin(frameCount * this.freq + this.phase);
+```
+ya el position.y sigue aumentanod por la gravedad y por las demas fuerzas, como el repeller, asi las particulas continuan cayendo pero con un movimieno diferente.
+
+
+Link al código:[https://editor.p5js.org/isams2004.1/sketches/iA7kOt1DV](https://editor.p5js.org/isams2004.1/sketches/iA7kOt1DV)
+
+codigo:
+```js
+// The Nature of Code
+// Daniel Shiffman
+// http://natureofcode.com
+
+// Simple Particle System
+
+// A simple Particle class
+
+class Particle {
+  constructor(x, y) 
+  {
+    this.originX = x;  
+    this.position = createVector(x, y);
+    this.velocity = createVector(random(-1, 1), random(-1, 0));
+    this.acceleration = createVector(0, 0);
+    this.lifespan = 255.0;
+    
+      // --- NUEVO: parámetros de la onda
+    this.phase = random(TWO_PI);      // fase inicial aleatoria
+    this.amp   = random(10, 30);      // amplitud de la oscilación
+    this.freq  = random(0.02, 0.05);  // “frecuencia” (velocidad de la onda)
+  }
+
+  run() {
+    this.update();
+    this.show();
+  }
+
+  applyForce(f) {
+    this.acceleration.add(f);
+  }
+
+  // Method to update position
+  update() {
+    this.velocity.add(this.acceleration);
+    this.position.add(this.velocity);
+    this.lifespan -= 2;
+    this.acceleration.mult(0);
+    
+     this.position.x = this.originX + this.amp * sin(frameCount * this.freq + this.phase);
+  }
+
+  // Method to display
+  show() {
+    stroke(0, this.lifespan);
+    strokeWeight(2);
+    fill(127, this.lifespan);
+    circle(this.position.x, this.position.y, 8);
+  }
+
+  // Is the particle still useful?
+  isDead() {
+    return this.lifespan < 0.0;
+  }
+}
+
+```
+
+imagen: <img width="576" height="255" alt="image" src="https://github.com/user-attachments/assets/2d1d10c1-cbe5-4761-a0e3-0848bcabc8c8" />
 
 
 
