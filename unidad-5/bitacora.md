@@ -334,7 +334,107 @@ class Particle {
 imagen: <img width="576" height="255" alt="image" src="https://github.com/user-attachments/assets/2d1d10c1-cbe5-4761-a0e3-0848bcabc8c8" />
 
 
+# ACTIVIDAD 03
 
+## ¿Cuál es el concepto de tu obra? ¿Qué quieres comunicar con ella?
+la verdad desde un inicio no lo tenia muy claro, pero me han gustado mucho las funciones sinusoidales, por lo que queria jugar con ellas y ver que podia resultar, despues me acrodé de las manillas de figuras que eran populares cuando estaba chiquita entonces me quise basar un poco en eso, no quiero transmitir nostalgia, sino como ese sentimiento de "uuy que genial esto" que sentía cuando estaba chiquita, al ver las manillas.
+
+## conceptos utilizados
+-Funciones sinusoidales: para el contorno ondulante (frecuencia, fase, amplitud) en ambas subclases.
+
+-Perlin noise: drift orgánico del color (hue) y micro-variación del tamaño base a lo largo del tiempo.
+
+-randomGaussian: para velocidad radial inicial, logrando distribución natural (menos uniforme/robótica).
+
+-Fuerzas (Newton): el mouse aplica atracción/repulsión inversa al cuadrado de la distancia (controlada con límites para evitar singularidades).
+
+## Debes definir cómo vas a gestionar el tiempo de vida de las partículas y la memoria.
+Básicamente, cada waveForm tiene un lifespan y decay, y tal como lo vimos en esta unidad, usé un splicep para que se eliminen las particulas muertas, por medio del garbage collector de js
+
+## La obra debe ser interactiva en tiempo real. Puedes usar teclado, mouse, música, el micrófono, video, sensor o cualquier otro dispositivo de entrada.
+Uso el click izquierdo para hacer una especie de "flash", se supone que cuando pasas el curssor sobre una figura, se ilumina, pero eso realmente nunca me dio ajajja, las teclas A yZ siven para ajustar la opacidad de la estela y eso esta brutal porque se puede jugar mucho con eso.
+
+LINK: [https://editor.p5js.org/isams2004.1/sketches/K4uzydX94](https://editor.p5js.org/isams2004.1/sketches/K4uzydX94)
+
+Codigo (el del sketch, porque son muchas clases)
+
+``` js
+// sketch.js
+let systems = [];
+let gravityG = 0.9;
+let bgAlpha = 0.08;
+let hueDriftT = 0;
+let emitter;
+let flashAlpha = 0;
+const FLASH_MAX  = 0.22;
+const FLASH_RISE = 0.35;
+const FLASH_FALL = 0.25;
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  colorMode(HSB, 360, 100, 100, 1);
+  noFill();
+  strokeWeight(2);
+
+  emitter = new Emitter(createVector(width/2, height/2));
+  systems.push(emitter);
+}
+
+function draw() {
+  // Oscurecer con estela
+  const effectiveBg = constrain(bgAlpha + flashAlpha * 0.6, 0, 1);
+  noStroke();
+  fill(0, 0, 0, effectiveBg);
+  rect(0, 0, width, height);
+
+  // Flash de fondo
+  if (mouseIsPressed && mouseButton === LEFT) {
+    flashAlpha = lerp(flashAlpha, FLASH_MAX, FLASH_RISE);
+  } else {
+    flashAlpha = lerp(flashAlpha, 0, FLASH_FALL);
+  }
+  noStroke();
+  fill(0, 0, 100, flashAlpha);
+  rect(0, 0, width, height);
+
+  hueDriftT += 0.003;
+
+  // menos caos en el centro
+  emitter.addParticle();
+
+  if (mouseIsPressed) {
+    const repelling = keyIsDown(SHIFT);
+    emitter.applyMouseGravity(createVector(mouseX, mouseY), repelling);
+  }
+
+  for (let i = systems.length - 1; i >= 0; i--) {
+    systems[i].run();
+  }
+
+  noStroke();
+  fill(0, 0, 100, 0.6);
+  textSize(14);
+  text("Click: atraer | Shift+Click: repeler | [A/Z] estela +/- | [S] guardar",
+       14, height - 16);
+}
+
+function keyPressed() {
+  if (key === 'S' || key === 's') saveCanvas('neon_waves', 'png');
+  if (key === 'A' || key === 'a') bgAlpha = constrain(bgAlpha + 0.02, 0, 1);
+  if (key === 'Z' || key === 'z') bgAlpha = constrain(bgAlpha - 0.02, 0, 1);
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  emitter.origin.set(width/2, height/2);
+}
+
+```
+
+
+
+
+<img width="1494" height="1298" alt="neon_waves (7)" src="https://github.com/user-attachments/assets/fd72721c-60dc-4f2e-904d-38a181bb0d38" />
 
 
 
