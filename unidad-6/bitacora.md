@@ -26,7 +26,30 @@ Por otro lado, la fuerza de direccion es una fuerza "artificial" o de control, n
 
 La steering force es la herramienta central que Reynolds diseñó para traducir las inteciones de cada boid (separarse, alinearse, acercarse) en un movimiento realista, si no lo usara, este modelo no tendria la suavidad y el realismo que lo hico tan influyente en la simulacion de comportamiento animal y en la animacion por computador.
 
-# Actividdad 3
+# Actividad 3
+
+## Identifica la estructura del campo: en el código (usualmente en una clase FlowField), localiza cómo se almacena el campo de flujo. ¿Qué estructura de datos se usa (ej: un array 2D)? ¿Qué representa cada elemento de esa estructura? ¿Cómo se calcula inicialmente el vector en cada punto?
+
+Se usa un arreglo bidimensional (array 2D), el primer indice i son las columnas del campo, el segundo indice j son las filas del campo, y cada celda de ese arreglo contiene un objeto p5.Vector.
+
+Cada elemento this.field[i][j] es un vector de direccion en ese punto de la grilla, en cuanto a la magnitud, en el ejemplo se deja en 1 cuando se crea con p5.Vector.fromAngle(angle) y el angulo indica la direccion de flujo en esa celda, basicamente cada celda de la cuadricula es una flecha que marca la direccion local del campo de flujo.
+
+ya enc uanto al calculo inicial de los vectores, la funcion init() genera los vectores usando ruido perlin (noise(xoff,yoff)) para obtener un valor suave entre 0 y 1, ese valor se mapea a un angulo en el rango 0 a 2pi, y ya con p5.Vector.fromAngle(angle) se crea un vector unitario apuntando en esa direccion.
+
+## Analiza el comportamiento del agente: en el código de la clase del vehículo/agente (Vehicle), encuentra la función follow(). Explica con tus palabras:
+
+## ¿Cómo determina el agente qué vector del campo de flujo debe seguir basándose en su posición actual? (pista: implica mapear la posición a índices de la cuadrícula).
+
+Lo que se hace es que se divide la coordenada x por el tamaño de la celda (resolution) y obtiene la columna, luego se divide la coordenada y por le tamaño de la celda y se obtiene la fila, lugo se hace uso de floor() y constrain(), con eso se asegura de que el indice quede en el rango valido, y ya con estos indices accede a la celda del campo de flujo y se devuelve el vector de direccion correspondiente
+
+## Una vez que tiene el vector deseado del campo, ¿Cómo lo utiliza para calcular la fuerza de dirección (steering force)? (pista: implica calcular la diferencia con la velocidad actual y limitar la fuerza). 
+
+Cuando ya se obtiene el vvector deseado, escala el vector deseado a su velocidad maxima (maxspeed) para que represente la velocidad objetivo en esa direcicion de flujo y ya despues calcula la velocidad deseada (steer = desired - velocity) esa diferencia es la aceleracion necesaria para corregir la trayectoria hacia el flujo, tambien cabe resaltar que se limita la fuerza (steer.limit(this.maxforce)) para que la aceleracion no sea mayor a la capacidad del agente, evitando cambios bruscos, y ya despues se aplica la fuerza (applyForce(steer)) sumandola a la aceleracion total del ciclo.
+
+
+
+
+
 
 
 
