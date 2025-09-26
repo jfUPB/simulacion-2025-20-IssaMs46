@@ -46,6 +46,21 @@ Lo que se hace es que se divide la coordenada x por el tamaño de la celda (reso
 
 Cuando ya se obtiene el vvector deseado, escala el vector deseado a su velocidad maxima (maxspeed) para que represente la velocidad objetivo en esa direcicion de flujo y ya despues calcula la velocidad deseada (steer = desired - velocity) esa diferencia es la aceleracion necesaria para corregir la trayectoria hacia el flujo, tambien cabe resaltar que se limita la fuerza (steer.limit(this.maxforce)) para que la aceleracion no sea mayor a la capacidad del agente, evitando cambios bruscos, y ya despues se aplica la fuerza (applyForce(steer)) sumandola a la aceleracion total del ciclo.
 
+## Identifica parámetros clave: localiza en el código las variables que controlan aspectos importantes como: La resolución del campo de flujo (el tamaño de las celdas de la cuadrícula). La velocidad máxima (maxspeed) y la fuerza máxima (maxforce) de los agentes.
+
+la variable de resolucion del campo de flujo es la variable this.resolution y se encuentra en el constructor de FlowField, indica el tamaño en pixeles de cada celda de la malla de flujo, si es un valor pequeño son mas celdas, unc apo mas detallado, si es un valor grande son menos celdas, un capo mas grueso.
+
+La velociad maxima del agente es la variable this.maxspeed, se define en el constructor de vehicle, su "significado" es la velocidad tope que el eagente puede alcanzar cuando sigue el flujo, y su ujso clase es en follow(), escala el vector deseado para que el agente se mueva como macimo a esta velocidad.
+
+La fuerza máxima de dirección es la variable this.maxforce, que se define en el constructor de Vehicle, es el límite superior para la magnituud de la steering force, sy uso clade es en follow(), asegurandose que el agente no gire ni acelere mas ráido de lo permitido, para asi mantener movimiento suaves.
+
+## Experimenta con modificaciones: realiza al menos una de las siguientes modificaciones en el código, ejecuta y describe el efecto observado en el comportamiento de los agentes: Modifica sustancialmente la resolución del campo de flujo (hazla mucho más fina o mucho más gruesa).
+
+en mi caso la linea que modifique ffue la creacion del flowfield, let flow = new FlowField(5); haciendo de esta fforma que sean muchas celdas pequeñas, loque hace quelos vehiculos se muevan "nerviosamene" y cambiando de dirección con mucha frecuencia.
+
+<img width="715" height="266" alt="image" src="https://github.com/user-attachments/assets/379065e1-0acd-4441-bc5d-bc7ffe03e9f9" />
+
+
 
 
 
