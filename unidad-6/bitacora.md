@@ -138,6 +138,16 @@ let neighborDistance = 200;
 <img width="722" height="273" alt="image" src="https://github.com/user-attachments/assets/2e68d803-3031-4e60-979e-4e00f45ca496" />
 
 
+## Actividad 4
+
+En esta actividad quiero intentar hacerle viuales a la cancion chlorine de twenty one pilots, la version de Mexico City, es una cancion calmada, estuve buscnado obras para inspirarme y me gustó mucho el fondo de un video (no muestran como hacerlo, solo es el fondo, ya que ene l video hablan de arte geenrativo:
+
+<img width="822" height="466" alt="image" src="https://github.com/user-attachments/assets/dedb0cb5-a627-440a-a7e1-1c903e716a99" />
+
+Dado esto, quiero intentar hacer varios cardumenes de particulas que se muevan y alteren su comportamiento teniendo en cuenta las entradas que yo haga por el teclado, quiero que el setting sean particulas amarillas en un fondo negro,voy a ver como ir implementando todo para que use el flocking, aunque ya tengo una idea de como queiro que se vea.
+
+
+
 
 
 
