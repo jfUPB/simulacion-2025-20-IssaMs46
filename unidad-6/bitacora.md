@@ -119,6 +119,26 @@ this.maxforce = 0.05; // Fuerza de giro máxima
 estas limitaciones evitan que los voids cambien brucamente de direccion o aceleren de forma irreal
 
 
+## experimenta con modificaciones:
+
+Cambié el peso de una regla para que la separacion seamuhco mas fuerte, por lo que cada void prioriza alejarse de los demás, adicional a esto, desactivé la cohesion entonces no hay fuerza que los vuelva a juntar. Todo esto hace que los boids tiendan a dispersarse en el espacio, moviendose de una forma más aislada o en grupos muy pequeños, se pierde la sensación de bandada.
+
+```js
+sep.mult(3.0);  
+ali.mult(1.0);
+coh.mult(0.0); 
+```
+
+También modifique el radio de percepcion, haciendo que los voids consideren muchos mas vecinos como parte de su grupo, haciendo que el movimiento colectivo se vuelva mucho mas uniforme porque cada void trata de alinearse y cohesionarse con casi todos a la vez
+
+```js
+let neighborDistance = 200;
+```
+
+<img width="722" height="273" alt="image" src="https://github.com/user-attachments/assets/2e68d803-3031-4e60-979e-4e00f45ca496" />
+
+
+
 
 
 
