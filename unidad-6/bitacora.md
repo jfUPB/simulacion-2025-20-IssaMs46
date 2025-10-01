@@ -61,6 +61,67 @@ en mi caso la linea que modifique ffue la creacion del flowfield, let flow = new
 <img width="715" height="266" alt="image" src="https://github.com/user-attachments/assets/379065e1-0acd-4441-bc5d-bc7ffe03e9f9" />
 
 
+# Actividad 4
+
+## Identifica las tres reglas:
+
+* Separación (Separation): evitar el hacinamiento con vecinos cercanos.
+Para esta regla se hace uso del metodo separate(boids), este metodo revisa los void cercanos a una distancia menos a desiredSeparation = 25, si hay vecinoss muy proximoos, calcula un vector que apunte a la direccion opuesta del vecino (resta posiciones), el vector se normaliza y se ajusta por la distancia y luego se limita por maxforce
+
+* Alineación (Alignment): dirigirse en la misma dirección promedio que los vecinos cercanos.
+Se usa la funcion align(boids), este metodo calcula la velocidad promedio de los vecinos cercanos dentro de un radio (neighborDistance = 50), luego normaliza esa velocidad promadio, ajusta a maxspeed y la compara con la velocidad actual ( steer = desired - velocity), en ese caso, el boid ajusta su direccion para allinearse con la direccion promedio del grupo
+
+* Cohesión (Cohesion): moverse hacia la posición promedio de los vecinos cercanos.
+Este étodo obtiene la posicion promedio de los vecinos cercanos (tambiene stando dentro del neighborDistance = 50), luego llama al metoo seek(sum) para generar una fuerza de dirección hacia ese centro, entonces el boid se mueve hacia el grupo, manteniendose unido con los demás.
+
+``` js
+flock(boids) {
+  let sep = this.separate(boids); // Separación
+  let ali = this.align(boids);    // Alineación
+  let coh = this.cohere(boids);   // Cohesión
+  
+  // Pesos diferentes para cada regla
+  sep.mult(1.5);
+  ali.mult(1.0);
+  coh.mult(1.0);
+
+  this.applyForce(sep);
+  this.applyForce(ali);
+  this.applyForce(coh);
+}
+```
+
+## Explica las reglas: para cada una de las tres reglas, explica con tus propias palabras: ¿Cuál es el objetivo de la regla?, ¿Cómo calcula el agente la fuerza de dirección correspondiente?
+
+*Separación: evitar el hacinamiento, la regla hace que un boid se aleje de los vecinos que estén demasiado cerca, para que no choquen o se amontonen. La regla se calcula de la siguiente manera: revisa todos los boids dentro de un radio definido ( desiredSeparation = 25) si otro boid eestá demasiado cerca, se calcula un vector que apunta desde el vecino hacia el boid actual (direccion de alejamiento), se normaliza el vector y se pondera por la distancia (más fuerte si está mmás pegado) y se suman todos los vecinos, ya finalmente se ajusta a la maxspeed y se limita por maxforce para obtener la fuerza de dirección.
+
+*Alineacion: Busca lograr que el void se mueva en la misa dirección promedio que sus vecinos cercanos, imitando el comportamiento de bandadas y cardúmenes. Para calcular la fuerza mira todos los boids dentro de unr adio de percepció (neighborDistance = 50), suma sus velocidades, promedia ese vectori y lo normaliza. Escala la velocidad promedio al valor máximo (maxspeed) y calcla el vector deireccion como la difrerencia entre esa velocidad deseada y la actual ( steer = desired - velocity) y limita el resultado con maxforce
+
+*Cohesion, Su objevito es mantener la unión del grupo, hace que el boid tienda a moverse hacia el centro del grupo de vecinos, evitando que se disperse. Ya para calcular la fuerza, considera a los vecinos dentro de un raio (neighborDistance = 50) suma todas sus posiciones y sac el pomedio, llama a al funcion seek(sum) para generar un vector que apunte hacia ee punto medio, ese vector tambinén se limita con maxforce.
+
+## Parámetros clave
+
+1.Radio/distancia de percepción: Para separacion desiredSeparation = 25, para alineacion y cohesion, neighborDistance = 50
+
+2.Pesos o multiplicadores de influencia relativa: están en flock(boids)
+```js
+sep.mult(1.5);
+ali.mult(1.0);
+coh.mult(1.0);
+```
+ahí separacion tiene  mayor peso (1.5), loq ue significa que evitar choques es mas prioritario que seguir o acercarse al grupo
+
+3.Velocidad máxima y fuerza máxima: Definidas en el constructor:
+```js
+this.maxspeed = 3;   // Velocidad máxima
+this.maxforce = 0.05; // Fuerza de giro máxima
+```
+estas limitaciones evitan que los voids cambien brucamente de direccion o aceleren de forma irreal
+
+
+
+
+
 
 
 
