@@ -345,8 +345,12 @@ https://editor.p5js.org/isams2004.1/sketches/CFz5lzOIZ
 
 
 Fotos del proceso:
+
 <img width="864" height="705" alt="image" src="https://github.com/user-attachments/assets/d80f0563-e053-4b55-be28-f447c7d52fac" />
 <img width="856" height="716" alt="image" src="https://github.com/user-attachments/assets/504d4df0-e8cf-47ea-ad37-c54cdb5924dc" />
+<img width="857" height="718" alt="image" src="https://github.com/user-attachments/assets/627e2c99-8109-4edd-8e84-d6abd4d7d0c3" />
+
+
 
 
 
