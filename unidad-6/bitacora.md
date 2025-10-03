@@ -147,6 +147,207 @@ En esta actividad quiero intentar hacerle viuales a la cancion chlorine de twent
 Dado esto, quiero intentar hacer varios cardumenes de particulas que se muevan y alteren su comportamiento teniendo en cuenta las entradas que yo haga por el teclado, quiero que el setting sean particulas amarillas en un fondo negro,voy a ver como ir implementando todo para que use el flocking, aunque ya tengo una idea de como queiro que se vea.
 
 
+```js
+let boids = [];
+let MAX_BOIDS = 400; 
+let globalMaxSpeed = 6.5;
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  colorMode(HSB, 255);
+  background(0);
+
+  for (let i = 0; i < 250; i++) {
+    boids.push(new Boid(random(width), random(height)));
+  }
+}
+
+function draw() {
+  background(0, 15);
+
+  for (let b of boids) {
+    b.maxspeed = globalMaxSpeed; 
+
+    if (frameCount % 2 === 0) {
+      const sep = b.separate(boids).mult(1.5);
+      const ali = b.align(boids).mult(1.0);
+      const coh = b.cohesion(boids).mult(1.0);
+
+      b.applyForce(sep);
+      b.applyForce(ali);
+      b.applyForce(coh);
+
+      const tgt = b.seek(createVector(mouseX, mouseY)).mult(0.5);
+      b.applyForce(tgt);
+    }
+
+    b.update();
+    b.edges();
+    b.show();
+  }
+}
+
+// ----------------- explosión suave + aumento de tamaño -----------------
+function mousePressed() {
+  for (let b of boids) {
+    let force = p5.Vector.random2D();
+    force.mult(random(0.3, 1.0)); 
+    b.applyForce(force);
+
+    b.size += 4; 
+  }
+}
+
+// ----------------- teclado -----------------
+function keyPressed() {
+  if (key === 'a' || key === 'A') {
+    for (let i = 0; i < 100; i++) {
+      if (boids.length < MAX_BOIDS) {
+        boids.push(new Boid(mouseX, mouseY));
+      }
+    }
+  }
+  if (key === 'w' || key === 'W') {
+    globalMaxSpeed += 0.5; 
+    print("Velocidad ↑: " + globalMaxSpeed);
+  }
+  if (key === 'e' || key === 'E') {
+    globalMaxSpeed = max(0.5, globalMaxSpeed - 0.5); 
+    print("Velocidad ↓: " + globalMaxSpeed);
+  }
+}
+
+// ----------------- clase Boid -----------------
+class Boid {
+  constructor(x, y) {
+    this.pos = createVector(x, y);
+    this.vel = p5.Vector.random2D();
+    this.vel.setMag(random(2, 4));
+    this.acc = createVector(0, 0);
+
+    this.maxforce = 0.1;
+    this.maxspeed = globalMaxSpeed; 
+
+    this.size = 6; 
+    this.hueOffset = random(TWO_PI); // cada boid oscila distinto
+  }
+
+  applyForce(f) { this.acc.add(f); }
+
+  seek(target) {
+    const desired = p5.Vector.sub(target, this.pos);
+    if (desired.mag() === 0) return createVector(0, 0);
+    desired.setMag(this.maxspeed);
+    const steer = p5.Vector.sub(desired, this.vel);
+    steer.limit(this.maxforce);
+    return steer;
+  }
+
+  separate(boids) {
+    const desiredSeparation = 25;
+    let steer = createVector(0, 0);
+    let count = 0;
+    for (const other of boids) {
+      const d = p5.Vector.dist(this.pos, other.pos);
+      if (d > 0 && d < desiredSeparation) {
+        const diff = p5.Vector.sub(this.pos, other.pos);
+        diff.normalize();
+        diff.div(d);
+        steer.add(diff);
+        count++;
+      }
+    }
+    if (count > 0) steer.div(count);
+    if (steer.mag() > 0) {
+      steer.setMag(this.maxspeed);
+      steer.sub(this.vel);
+      steer.limit(this.maxforce);
+    }
+    return steer;
+  }
+
+  align(boids) {
+    const neighborDist = 50;
+    let sum = createVector(0, 0);
+    let count = 0;
+    for (const other of boids) {
+      const d = p5.Vector.dist(this.pos, other.pos);
+      if (d > 0 && d < neighborDist) {
+        sum.add(other.vel);
+        count++;
+      }
+    }
+    if (count > 0) {
+      sum.div(count);
+      sum.setMag(this.maxspeed);
+      const steer = p5.Vector.sub(sum, this.vel);
+      steer.limit(this.maxforce);
+      return steer;
+    }
+    return createVector(0, 0);
+  }
+
+  cohesion(boids) {
+    const neighborDist = 50;
+    let sum = createVector(0, 0);
+    let count = 0;
+    for (const other of boids) {
+      const d = p5.Vector.dist(this.pos, other.pos);
+      if (d > 0 && d < neighborDist) {
+        sum.add(other.pos);
+        count++;
+      }
+    }
+    if (count > 0) {
+      sum.div(count);
+      return this.seek(sum);
+    }
+    return createVector(0, 0);
+  }
+
+  update() {
+    this.vel.add(this.acc);
+    this.vel.limit(this.maxspeed);
+    this.pos.add(this.vel);
+    this.acc.mult(0);
+
+    this.size = lerp(this.size, 6, 0.05);
+  }
+
+  show() {
+    noStroke();
+    
+    // Oscilar color entre 60 (amarillo) y 120 (verde)
+    let h = map(sin(frameCount * 0.02 + this.hueOffset), -1, 1, 60, 120);
+
+    // halo
+    fill(h, 255, 255, 10);  
+    ellipse(this.pos.x, this.pos.y, this.size * 3, this.size * 3);
+
+    // núcleo
+    fill(h, 255, 255, 150); 
+    ellipse(this.pos.x, this.pos.y, this.size, this.size);
+  }
+
+  edges() {
+    if (this.pos.x > width) this.pos.x = 0;
+    if (this.pos.x < 0) this.pos.x = width;
+    if (this.pos.y > height) this.pos.y = 0;
+    if (this.pos.y < 0) this.pos.y = height;
+  }
+}
+
+```
+
+<img width="835" height="724" alt="image" src="https://github.com/user-attachments/assets/f5406714-79b8-4d9c-ac6c-ad1a7905f784" />
+
+https://editor.p5js.org/isams2004.1/sketches/CFz5lzOIZ
+
+
+Fotos del proceso:
+<img width="864" height="705" alt="image" src="https://github.com/user-attachments/assets/d80f0563-e053-4b55-be28-f447c7d52fac" />
+<img width="856" height="716" alt="image" src="https://github.com/user-attachments/assets/504d4df0-e8cf-47ea-ad37-c54cdb5924dc" />
+
 
 
 
