@@ -352,6 +352,8 @@ Fotos del proceso:
 <img width="856" height="716" alt="image" src="https://github.com/user-attachments/assets/504d4df0-e8cf-47ea-ad37-c54cdb5924dc" />
 <img width="857" height="718" alt="image" src="https://github.com/user-attachments/assets/627e2c99-8109-4edd-8e84-d6abd4d7d0c3" />
 
+Nota autoevaluación: 5, realicé las 5 actividades completas y la autoevaluación.
+
 
 
 
