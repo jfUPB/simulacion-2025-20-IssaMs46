@@ -19,8 +19,8 @@
 ## 3.. Intenta replicar en p5.js al menos dos experimentos básicos mostrados en el video de Patt Vira o en los ejemplos del sitio web.
 
 * Crear un mundo con gravedad y añadir algunos cuerpos simples (círculos, cajas) que caigan y colisionen.
-  
-  ```js
+  link: [https://editor.p5js.org/isams2004.1/sketches/ixzkzPgOK ](https://editor.p5js.org/isams2004.1/sketches/ixzkzPgOK)
+```js
 
 let Engine = Matter.Engine,
     World = Matter.World,
@@ -75,7 +75,14 @@ function draw() {
   rect(ground.position.x, ground.position.y, 810, 60);
 }
 
-  ```
+ ```
+
+<img width="751" height="614" alt="image" src="https://github.com/user-attachments/assets/307fa5a6-96ac-4d86-a20b-59a62fff5f0f" />
+
+*ejemplo 2,Interacción con el mouse (MouseConstraint)
+```js
+```
+
 
 ## 4. Explica los conceptos: basándote en tu experimentación y lectura, explica con tus propias palabras qué es y para qué sirve cada uno de los conceptos clave listados en el paso 2 (Engine, World, Bodies, Constraint, MouseConstraint).
 
@@ -87,6 +94,7 @@ Composite: Es un conjunto de bodies y constrants que se manejan como una sola un
 Render: visualiza la simulacion física.
 Runner: hace update al engine en los intervalos fixeados
 MouseConstraint: Se usan para permitir la interaccion del usuario, para mover objetos o interactuar con ellos a traves del mouse o touch.
+
 
 
 
