@@ -80,8 +80,69 @@ function draw() {
 <img width="751" height="614" alt="image" src="https://github.com/user-attachments/assets/307fa5a6-96ac-4d86-a20b-59a62fff5f0f" />
 
 *ejemplo 2,Interacción con el mouse (MouseConstraint)
+[https://editor.p5js.org/isams2004.1/sketches/O1GPYvKls](https://editor.p5js.org/isams2004.1/sketches/O1GPYvKls)
 ```js
+// ----- Experimento 2: Interacción con el mouse -----
+
+let Engine = Matter.Engine,
+    World = Matter.World,
+    Bodies = Matter.Bodies,
+    Mouse = Matter.Mouse,
+    MouseConstraint = Matter.MouseConstraint;
+
+let engine;
+let world;
+let circles = [];
+let ground;
+let mConstraint;
+
+function setup() {
+  createCanvas(800, 600);
+
+  engine = Engine.create();
+  world = engine.world;
+
+  // Crear suelo
+  let options = { isStatic: true };
+  ground = Bodies.rectangle(400, height - 50, 810, 60, options);
+  World.add(world, ground);
+
+  // Crear algunos círculos
+  for (let i = 0; i < 5; i++) {
+    let c = Bodies.circle(random(100, 700), random(50, 200), random(20, 40));
+    World.add(world, c);
+    circles.push(c);
+  }
+
+  // Crear MouseConstraint
+  let canvasmouse = Mouse.create(canvas.elt);
+  let optionsMC = {
+    mouse: canvasmouse
+  };
+  mConstraint = MouseConstraint.create(engine, optionsMC);
+  World.add(world, mConstraint);
+}
+
+function draw() {
+  background(25);
+  Engine.update(engine);
+
+  // Dibujar círculos
+  fill(255, 180, 100);
+  noStroke();
+  for (let c of circles) {
+    ellipse(c.position.x, c.position.y, c.circleRadius * 2);
+  }
+
+  // Dibujar suelo
+  fill(120);
+  rectMode(CENTER);
+  rect(ground.position.x, ground.position.y, 810, 60);
+}
+
 ```
+
+<img width="784" height="651" alt="image" src="https://github.com/user-attachments/assets/df68b5f0-6839-4f50-bb4a-106d04dcab8c" />
 
 
 ## 4. Explica los conceptos: basándote en tu experimentación y lectura, explica con tus propias palabras qué es y para qué sirve cada uno de los conceptos clave listados en el paso 2 (Engine, World, Bodies, Constraint, MouseConstraint).
@@ -94,6 +155,7 @@ Composite: Es un conjunto de bodies y constrants que se manejan como una sola un
 Render: visualiza la simulacion física.
 Runner: hace update al engine en los intervalos fixeados
 MouseConstraint: Se usan para permitir la interaccion del usuario, para mover objetos o interactuar con ellos a traves del mouse o touch.
+
 
 
 
