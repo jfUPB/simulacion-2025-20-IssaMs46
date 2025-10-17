@@ -341,6 +341,8 @@ function drawScene() {
 https://github.com/user-attachments/assets/ea17c21a-ba4a-4868-9318-00069499a810
 
 
+# AUTOEVALUACION
+5: realicé las 3 actividades completas y la autoevaluación.
 
 
 
